@@ -1,3 +1,5 @@
+![Screenshot](img/HeaderSM.jpg)
+
 # About the project
 
 This is the documentation for Open Recommendation Butler. You find the full project on [GitHub](https://github.com/open-recommendation-butler/).
