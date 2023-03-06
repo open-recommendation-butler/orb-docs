@@ -1,4 +1,4 @@
-![Screenshot](img/HeaderSM.jpg)
+![Screenshot: Increase impressions with smarter search](img/HeaderSM.jpg)
 
 # About the project
 
