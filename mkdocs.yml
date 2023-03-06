@@ -1,2 +1,9 @@
 site_name: Open Recommendation Butler
 theme: readthedocs
+nav:
+  - 'index.md'
+  - 'getting_started.md'
+  - 'add_documents.md'
+  - 'search.md'
+  - 'deploying.md'
+  - 'tutorials.md'
