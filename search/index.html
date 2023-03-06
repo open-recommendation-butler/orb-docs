@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Tutorials - Open Recommendation Butler</title>
+    <title>How to search for documents with the API? - Open Recommendation Butler</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Tutorials";
-        var mkdocs_page_input_path = "tutorials.md";
+        var mkdocs_page_name = "How to search for documents with the API?";
+        var mkdocs_page_input_path = "search.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -52,28 +52,18 @@
                 <li class="toctree-l1"><a class="reference internal" href="../add_documents/">How to add documents to the database?</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../search/">How to search for documents with the API?</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">How to search for documents with the API?</a>
+    <ul class="current">
+    </ul>
                 </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../deploying/">How to deploy Open Recommendation Butler on a server?</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Tutorials</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-add-the-news-category-dataset-to-the-database">How to add the News Category Dataset to the database?</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#about-the-dataset">About the dataset</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#run-the-code">Run the code</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../tutorials/">Tutorials</a>
                 </li>
               </ul>
       </div>
@@ -90,7 +80,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Tutorials</li>
+      <li>How to search for documents with the API?</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -99,40 +89,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="tutorials">Tutorials</h1>
-<h2 id="how-to-add-the-news-category-dataset-to-the-database">How to add the News Category Dataset to the database?</h2>
-<p>This tutorial shows you how to add a full dataset to the database. We use a small Python script and the News Category Dataset.</p>
-<h3 id="about-the-dataset">About the dataset</h3>
-<p>The <a href="https://www.kaggle.com/datasets/rmisra/news-category-dataset">News Category Dataset</a> contains around 210k news headlines and teasers from 2012 to 2022 from HuffPost. </p>
-<p>It is a good use case to test ORB.</p>
-<p>Each record in the dataset consists of the following attributes:
-- category: category in which the article was published.
-- headline: the headline of the news article.
-- authors: list of authors who contributed to the article.
-- link: link to the original news article.
-- short_description: Abstract of the news article.
-- date: publication date of the article.</p>
-<p>We will add those attributes to the database.</p>
-<h3 id="requirements">Requirements</h3>
-<ul>
-<li>ORB is up and running. See: <a href="https://github.com/open-recommendation-butler/ORB#how-to-get-started">How to get started</a></li>
-<li>A kaggle account. It's free: <a href="https://www.kaggle.com/">Register at Kaggle</a></li>
-<li>An API key from Kaggle. More information: <a href="https://www.kaggle.com/docs/api#authentication">Kaggle's documentation for authentication</a></li>
-<li>The opendatasets and requests libraries. You can install them with the following command:</li>
-</ul>
-<pre><code class="language-bash">pip install requests opendatasets
+                <h1 id="how-to-search-for-documents-with-the-api">How to search for documents with the API?</h1>
+<p>You can use the web demo to search for documents (<a href="http://localhost:8000">http://localhost:8000</a>) or you can use the API.</p>
+<p>In the following, you will learn how to search with the API.</p>
+<p>You can retrieve search results by sending a GET request:</p>
+<pre><code class="language-bash">GET http://localhost:8000/search/
 </code></pre>
-<h3 id="run-the-code">Run the code</h3>
-<p>To download the dataset from Kaggle and to insert it into the dataset, you can use this script: <a href="/tutorials/adding-news-category-dataset/adding-news-category-dataset.py">adding-news-category-dataset.py</a></p>
-<p>You can run the script from the main directory with the following command:</p>
-<pre><code class="language-bash">python tutorials/adding-news-category-dataset/adding-news-category-dataset.py
+<p>You can use the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th align="center">What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>q</td>
+<td align="center">Search term to query (string)</td>
+</tr>
+<tr>
+<td>as_topics</td>
+<td align="center">If results should be clustered in topics (boolean)</td>
+</tr>
+<tr>
+<td>return_json</td>
+<td align="center">If response should be JSON instead of HTML (boolean)</td>
+</tr>
+</tbody>
+</table>
+<p>An example search would look like:</p>
+<pre><code>GET http://localhost:8000/search/?as_topics=True&amp;q=der&amp;return_json=True
 </code></pre>
-<p>ORB will convert the articles to embeddings and index them. Depending on your machine, this might take up some hours.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../deploying/" class="btn btn-neutral float-left" title="How to deploy Open Recommendation Butler on a server?"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../add_documents/" class="btn btn-neutral float-left" title="How to add documents to the database?"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../deploying/" class="btn btn-neutral float-right" title="How to deploy Open Recommendation Butler on a server?">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -155,15 +149,17 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../deploying/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../add_documents/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../deploying/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
     <script>var base_url = '..';</script>
     <script src="../js/theme_extra.js" defer></script>
     <script src="../js/theme.js" defer></script>
-      <script src="../search/main.js" defer></script>
+      <script src="main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
