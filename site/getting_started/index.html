@@ -41,11 +41,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">About the project</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../deploying/">How to deploy Open Recommendation Butler on a server?</a>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
               <ul class="current">
@@ -53,23 +49,19 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-add-documents-to-the-database">How to add documents to the database?</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#the-api-endpoint">The API endpoint</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#a-adding-a-document-with-postman">a) Adding a document with Postman</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#b-adding-a-document-with-python">b) Adding a document with Python</a>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#how-to-search-for-documents-with-the-api">How to search for documents with the API?</a>
-    </li>
     </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../add_documents/">How to add documents to the database?</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../search/">How to search for documents with the API?</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../deploying/">How to deploy Open Recommendation Butler on a server?</a>
                 </li>
               </ul>
               <ul>
@@ -102,24 +94,24 @@
                 <h1 id="getting-started">Getting started</h1>
 <h2 id="installation">Installation</h2>
 <p>You can start ORB on your machine with docker by following these steps:</p>
-<ol>
+<ul>
 <li>Clone the repository</li>
-</ol>
+</ul>
 <pre><code class="language-bash">git clone https://github.com/open-recommendation-butler/ORB.git
 </code></pre>
-<ol>
+<ul>
 <li>Change directory to project directory</li>
-</ol>
+</ul>
 <pre><code class="language-bash">cd ORB
 </code></pre>
-<ol>
+<ul>
 <li>
 <p>Create a file with the name ".env".</p>
 </li>
 <li>
 <p>Insert the following content into the ".env" file. Replace <em>YourStrongPasswordForElasticSearch</em>, <em>YourStrongPasswordForKibana</em> and <em>YourStrongSecretKeyForDjango</em> with your own passwords.</p>
 </li>
-</ol>
+</ul>
 <p>Content of ".env" file:</p>
 <pre><code class="language-bash"># Password for the 'elastic' user (at least 6 characters)
 ELASTIC_PASSWORD=YourStrongPasswordForElasticSearch
@@ -130,104 +122,25 @@ KIBANA_PASSWORD=YourStrongPasswordForKibana
 # Secret key for Django (at least 6 characters)
 SECRET_KEY=YourStrongSecretKeyForDjango
 </code></pre>
-<ol>
+<ul>
 <li>Compose the docker</li>
-</ol>
+</ul>
 <pre><code class="language-bash">docker compose build
 </code></pre>
-<ol>
+<ul>
 <li>Compose the docker</li>
-</ol>
+</ul>
 <pre><code class="language-bash">docker compose up -d
 </code></pre>
-<ol>
+<ul>
 <li>Test if ORB is running by visiting <a href="http://localhost:8000">http://localhost:8000</a>.</li>
-</ol>
-<h2 id="how-to-add-documents-to-the-database">How to add documents to the database?</h2>
-<p>After setting up the ORB docker, your database does not include any documents. Documents can be articles, podcasts, messages, newsletters etc.</p>
-<p>In this tutorial you will learn how to add documents to the database.</p>
-<h3 id="the-api-endpoint">The API endpoint</h3>
-<p>ORB provides an API endpoint to add documents.</p>
-<p>You can add articles by doing a POST request:</p>
-<pre><code class="language-bash">POST http://localhost:8000/article/
-</code></pre>
-<p>You can send the following data to the endpoint (as a JSON):</p>
-<pre><code class="language-json">{
-  &quot;title&quot;: &quot;That's a title&quot;,
-  &quot;teaser&quot;: &quot;That's a teaser&quot;,
-  &quot;fullext&quot;: &quot;That's a fulltext&quot;,
-  &quot;url&quot;: &quot;https://example.com/&quot;,
-  &quot;content_type&quot;: &quot;article&quot;,
-  &quot;created&quot;: &quot;2012-04-23T18:25:43.511Z&quot;
-}
-</code></pre>
-<p>None of the fields is mandatory.</p>
-<p>If successful, the API sends the status <em>201 Created</em>.</p>
-<h3 id="examples">Examples</h3>
-<p>In this section you will find examples how to add send requests to the API.</p>
-<h4 id="a-adding-a-document-with-postman">a) Adding a document with Postman</h4>
-<p>You can add a document with <a href="https://www.postman.com/">Postman</a>. Postman is a program to test APIs.</p>
-<p>Create a POST request, include the body as a JSON and send the document to the API as seen in the picture.</p>
-<p><img alt="Screenshot of a POST request in Postman" src="../1-adding-documents-to-the-database/add-document-w-postman.png" title="Add document with Postman" /></p>
-<h4 id="b-adding-a-document-with-python">b) Adding a document with Python</h4>
-<p>You can automate adding documents with the <a href="https://requests.readthedocs.io/en/latest/">Python Request Library</a>.</p>
-<p>Install the library.</p>
-<pre><code class="language-bash">pip install requests
-</code></pre>
-<p>Run the following code to add a document:</p>
-<pre><code class="language-python">import requests
-
-document = {
-  &quot;title&quot;: &quot;That's a title&quot;,
-  &quot;teaser&quot;: &quot;That's a teaser&quot;,
-  &quot;fullext&quot;: &quot;That's a fulltext&quot;,
-  &quot;url&quot;: &quot;https://example.com/&quot;,
-  &quot;content_type&quot;: &quot;article&quot;,
-  &quot;created&quot;: &quot;2012-04-23T18:25:43.511Z&quot;
-}
-
-r = requests.post('http://localhost:8000/article/', json=document)
-
-print(r.status_code)
-</code></pre>
-<h2 id="how-to-search-for-documents-with-the-api">How to search for documents with the API?</h2>
-<p>You can use the web demo to search for documents (<a href="http://localhost:8000">http://localhost:8000</a>) or you can use the API.</p>
-<p>In the following, you will learn how to search with the API.</p>
-<p>You can retrieve search results by sending a GET request:</p>
-<pre><code class="language-bash">GET http://localhost:8000/search/
-</code></pre>
-<p>You can use the following parameters:</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th align="center">What it is</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>q</td>
-<td align="center">Search term to query (string)</td>
-</tr>
-<tr>
-<td>as_topics</td>
-<td align="center">If results should be clustered in topics (boolean)</td>
-</tr>
-<tr>
-<td>return_json</td>
-<td align="center">If response should be JSON instead of HTML (boolean)</td>
-</tr>
-</tbody>
-</table>
-<p>An example search would look like:</p>
-<pre><code>GET http://localhost:8000/search/?as_topics=True&amp;q=der&amp;return_json=True
-</code></pre>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../deploying/" class="btn btn-neutral float-left" title="How to deploy Open Recommendation Butler on a server?"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../tutorials/" class="btn btn-neutral float-right" title="Tutorials">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../add_documents/" class="btn btn-neutral float-right" title="How to add documents to the database?">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -250,10 +163,10 @@ print(r.status_code)
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../deploying/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../tutorials/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../add_documents/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
