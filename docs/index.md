@@ -8,12 +8,14 @@ This is the documentation for Open Recommendation Butler. You find the full proj
 
 Open Recommendation Butler enables you to increase the page impressions and stickiness of your customers. 
 
-* Customers value good search. Good search is hard work. 
-* Open Recommendation Butler is an out of the box solution to provide excellent search.
+1. Customers value good search. Good search is hard work. 
+2. Open Recommendation Butler is an out of the box solution to provide excellent search.
 
-## Project layout
+## Docs index
+This documentation includes the following:
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- [Getting started](/getting_started/)
+- [How to add documents to the database?](/add_documents/)
+- [How to search for documents with the API?](/search/)
+- [How to deploy Open Recommendation Butler on a server?](/deploying/)
+- [Tutorials](/tutorials/)
