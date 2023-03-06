@@ -1,13 +1,13 @@
-# Find what feels missing
+# About the project
 
 This is the documentation for Open Recommendation Butler. You find the full project on [GitHub](https://github.com/open-recommendation-butler/).
 
-## Commands
+## What is Open Recommendation Butler used for?
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+Open Recommendation Butler enables you to increase the page impressions and stickiness of your customers. 
+
+* Customers value good search. Good search is hard work. 
+* Open Recommendation Butler is an out of the box solution to provide excellent search.
 
 ## Project layout
 
