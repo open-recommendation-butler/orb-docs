@@ -3,6 +3,7 @@ theme: readthedocs
 nav:
   - 'index.md'
   - 'getting_started.md'
+  - 'credentials.md'
   - 'add_documents.md'
   - 'search.md'
   - 'deploying.md'
