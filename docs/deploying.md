@@ -8,21 +8,21 @@ You need a deployment server with Docker and Git installed and root rights. Opti
 
 ## Setting up the docker
 
-1. Clone the repository
+- Clone the repository
 
 ```bash
 git clone https://github.com/open-recommendation-butler/ORB.git
 ```
 
-2. Change directory to project directory
+- Change directory to project directory
 
 ```bash
 cd ORB
 ```
 
-3. Create a file with the name ".env".
+- Create a file with the name ".env".
 
-4. Insert the following content into the ".env" file. Replace *YourStrongPasswordForElasticSearch*, *YourStrongPasswordForKibana* and *YourStrongSecretKeyForDjango* with your own passwords. Replace *example.org* with your domain or IP adress.
+- Insert the following content into the ".env" file. Replace *YourStrongPasswordForElasticSearch*, *YourStrongPasswordForKibana* and *YourStrongSecretKeyForDjango* with your own passwords. Replace *example.org* with your domain or IP adress.
 
 Content of ".env" file:
 ```bash
@@ -42,17 +42,17 @@ DEBUG=False
 DOMAIN=example.com
 ```
 
-5. Compose the docker
+- Compose the docker
 ```bash
 docker compose -f docker-compose.prod.yml build
 ```
 
-6. Compose the docker
+- Compose the docker
 ```bash
 docker compose -f docker-compose.prod.yml up -d
 ```
 
-7. Test if ORB is running by visiting your domain or IP adress.
+- Test if ORB is running by visiting your domain or IP adress.
 
 
 ## Securing ORB with SSL (optional)
