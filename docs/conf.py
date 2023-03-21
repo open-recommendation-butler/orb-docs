@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Open Recommendation Butler'
-copyright = '2023, Matthias Meyer'
+copyright = 'MIT Licence'
 author = 'Matthias Meyer'
 
 # The full version, including alpha/beta/rc tags
