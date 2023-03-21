@@ -49,6 +49,10 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../credentials/">How to create API credentials with the admin panel?</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../add_documents/">How to add documents to the database?</a>
                 </li>
               </ul>
@@ -100,24 +104,24 @@
 <h2 id="requirements">Requirements</h2>
 <p>You need a deployment server with Docker and Git installed and root rights. Optionally, you need a registered domain. Alternativelly, you can access ORB via the IP adress of your server.</p>
 <h2 id="setting-up-the-docker">Setting up the docker</h2>
-<ol>
+<ul>
 <li>Clone the repository</li>
-</ol>
+</ul>
 <pre><code class="language-bash">git clone https://github.com/open-recommendation-butler/ORB.git
 </code></pre>
-<ol>
+<ul>
 <li>Change directory to project directory</li>
-</ol>
+</ul>
 <pre><code class="language-bash">cd ORB
 </code></pre>
-<ol>
+<ul>
 <li>
 <p>Create a file with the name ".env".</p>
 </li>
 <li>
 <p>Insert the following content into the ".env" file. Replace <em>YourStrongPasswordForElasticSearch</em>, <em>YourStrongPasswordForKibana</em> and <em>YourStrongSecretKeyForDjango</em> with your own passwords. Replace <em>example.org</em> with your domain or IP adress.</p>
 </li>
-</ol>
+</ul>
 <p>Content of ".env" file:</p>
 <pre><code class="language-bash"># Password for the 'elastic' user (at least 6 characters)
 ELASTIC_PASSWORD=YourStrongPasswordForElasticSearch
@@ -134,19 +138,19 @@ DEBUG=False
 # The domain for ORB. Alternatively, this can be an IP adress. 
 DOMAIN=example.com
 </code></pre>
-<ol>
+<ul>
 <li>Compose the docker</li>
-</ol>
+</ul>
 <pre><code class="language-bash">docker compose -f docker-compose.prod.yml build
 </code></pre>
-<ol>
+<ul>
 <li>Compose the docker</li>
-</ol>
+</ul>
 <pre><code class="language-bash">docker compose -f docker-compose.prod.yml up -d
 </code></pre>
-<ol>
+<ul>
 <li>Test if ORB is running by visiting your domain or IP adress.</li>
-</ol>
+</ul>
 <h2 id="securing-orb-with-ssl-optional">Securing ORB with SSL (optional)</h2>
 <p>You can secure the access to ORB with SSL. To do so, we will create a certificate with <a href="https://letsencrypt.org/">Let's encrypt</a> and <a href="https://certbot.eff.org/">certbot</a>.</p>
 <p>To do so, run the following command on the server. Remember to replace <em>YourMailAdress</em> and <em>YourDomain</em>. It's recommended to use a working mail adress. You will receive a notification if your certificate expires. </p>
